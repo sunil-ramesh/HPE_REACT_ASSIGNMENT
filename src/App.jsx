@@ -23,18 +23,29 @@ class App extends Component {
       return response.json();
     })
     .then((responseJson) => {
-       console.log(responseJson)
+       this.setState({
+        numbers: responseJson
+       })
     })
   }
 
   render() {
-    {console.log("data", this.props)}
     return (
       <div>
         <Button onClick = {() => this.generateNumbers()}> sumbit </Button>
+     { this.state.numbers ? 
+      this.state.numbers.map(number => {
+        return(
+       <li>
+      {number}
+    </li>
+        )
+     })
+      : null }
      </div>
+
      )
-   }
- }
+    }
+  }
 
  export default App;
